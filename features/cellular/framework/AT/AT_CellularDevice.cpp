@@ -446,9 +446,6 @@ nsapi_error_t AT_CellularDevice::init()
 nsapi_error_t AT_CellularDevice::shutdown()
 {
     _at->lock();
-    if (_state_machine) {
-        _state_machine->reset();
-    }
     CellularDevice::shutdown();
     _at->cmd_start("AT+CFUN=0");// set to minimum functionality
     _at->cmd_stop_read_resp();
